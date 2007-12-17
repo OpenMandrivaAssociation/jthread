@@ -13,7 +13,6 @@ Source0: http://research.edm.uhasselt.be/jori/jthread/%{name}-%{version}.tar.bz2
 License: MIT
 Group: System/Libraries
 Url: http://research.edm.uhasselt.be/~jori/page/index.php?n=CS.Jthread
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 
 %description
