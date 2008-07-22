@@ -1,6 +1,6 @@
 %define name jthread
 %define version 1.2.1
-%define release %mkrel 1
+%define release %mkrel 3
 %define api %version
 %define libname %mklibname %name %api
 %define develname %mklibname -d %name
