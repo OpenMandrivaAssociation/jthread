@@ -1,42 +1,37 @@
-%define name jthread
-%define version 1.2.1
-%define release %mkrel 4
-%define api %version
-%define libname %mklibname %name %api
-%define develname %mklibname -d %name
+%define libname %mklibname %{name} %{version}
+%define devname %mklibname -d %{name}
 
-Summary: Make use of threads easy on different platforms
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: http://research.edm.uhasselt.be/jori/jthread/%{name}-%{version}.tar.bz2
-License: MIT
-Group: System/Libraries
-Url: http://research.edm.uhasselt.be/~jori/page/index.php?n=CS.Jthread
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-
+Name:		jthread
+Version:	1.3.1
+Release:	1
+Summary:	Make use of threads easy on different platforms
+Group:		System/Libraries
+License:	MIT
+Url:		http://research.edm.uhasselt.be/~jori/page/index.php?n=CS.Jthread
+Source:		http://research.edm.uhasselt.be/jori/jthread/%{name}-%{version}.tar.bz2
+BuildRequires:	cmake
 
 %description
 The JThread package provides some classes to make use of threads easy
 on different platforms. The classes are actually rather simple
 wrappers around existing thread implementations.
 
-%package -n %libname
-Group:System/Libraries
-Summary: Make use of threads easy on different platforms
+%package -n %{libname}
+Group:		System/Libraries
+Summary:	Make use of threads easy on different platforms
+Obsoletes:	%{mklibname jthread 1.2.1} < %{EVRD}
 
-%description -n %libname
+%description -n %{libname}
 The JThread package provides some classes to make use of threads easy
 on different platforms. The classes are actually rather simple
 wrappers around existing thread implementations.
 
-%package -n %develname
-Group: Development/C++
-Summary: Make use of threads easy on different platforms
-Requires: %libname = %version
-Provides: lib%name-devel = %version-%release
+%package -n %{devname}
+Group:		Development/C++
+Summary:	Make use of threads easy on different platforms
+Requires:	%{libname} = %{EVRD}
 
-%description -n %develname
+%description -n %{devname}
 The JThread package provides some classes to make use of threads easy
 on different platforms. The classes are actually rather simple
 wrappers around existing thread implementations.
@@ -46,33 +41,20 @@ wrappers around existing thread implementations.
 %setup -q
 
 %build
-%configure2_5x
+%cmake
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-%makeinstall_std
+%makeinstall_std -C build
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
-
-%files -n %libname
-%defattr(-,root,root)
+%files -n %{libname}
 %doc *.TXT
-%_libdir/libjthread-%{api}.so
+%{_libdir}/libjthread.so.%{version}
 
-%files -n %develname
-%defattr(-,root,root)
+%files -n %{devname}
 %doc ChangeLog
-%_includedir/jthread
-%_libdir/pkgconfig/jthread.pc
-%_libdir/libjthread.so
-%_libdir/libjthread.a
-%_libdir/libjthread.la
+%{_includedir}/jthread
+%{_libdir}/cmake/JThread
+%{_libdir}/pkgconfig/jthread.pc
+%{_libdir}/libjthread.so
+%{_libdir}/libjthread.a
