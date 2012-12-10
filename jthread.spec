@@ -58,3 +58,29 @@ wrappers around existing thread implementations.
 %{_libdir}/pkgconfig/jthread.pc
 %{_libdir}/libjthread.so
 %{_libdir}/libjthread.a
+
+
+%changelog
+* Thu Jul 26 2012 Andrey Bondrov <abondrov@mandriva.org> 1.3.1-1
++ Revision: 811131
+- New version 1.3.1, new library major, switch to cmake
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+  + Olivier Blin <blino@mandriva.org>
+    - restore BuildRoot
+
+* Thu Sep 06 2007 Götz Waschk <waschk@mandriva.org> 1.2.1-1mdv2008.0
++ Revision: 80954
+- Import jthread
+
+
+
+* Thu Sep  6 2007 Götz Waschk <waschk@mandriva.org> 1.2.1-1mdv2008.0
+- initial package
