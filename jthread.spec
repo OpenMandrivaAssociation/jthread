@@ -3,7 +3,7 @@
 
 Name:		jthread
 Version:	1.3.1
-Release:	1
+Release:	2
 Summary:	Make use of threads easy on different platforms
 Group:		System/Libraries
 License:	MIT
