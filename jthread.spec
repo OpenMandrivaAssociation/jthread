@@ -7,7 +7,7 @@ Release:	2
 Summary:	Make use of threads easy on different platforms
 Group:		System/Libraries
 License:	MIT
-Url:		http://research.edm.uhasselt.be/~jori/page/index.php?n=CS.Jthread
+Url:		https://research.edm.uhasselt.be/~jori/page/index.php?n=CS.Jthread
 Source:		http://research.edm.uhasselt.be/jori/jthread/%{name}-%{version}.tar.bz2
 BuildRequires:	cmake
 
